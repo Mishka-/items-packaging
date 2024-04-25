@@ -1,0 +1,137 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+@include mat.strong-focus-indicators((
+  border-style: dotted,
+  border-width: 4px,
+  border-radius: 2px,
+));
+
+$room-primary: (
+  50 : #ebf0f1,
+  100 : #ccd9dd,
+  200 : #aac0c6,
+  300 : #88a6af,
+  400 : #6f939e,
+  500 : #55808d,
+  600 : #4e7885,
+  700 : #446d7a,
+  800 : #3b6370,
+  900 : #2a505d,
+  A100 : #a6e7ff,
+  A200 : #73daff,
+  A400 : #40ccff,
+  A700 : #26c5ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$room-secondary: (
+  50 : #f5f8f8,
+  100 : #e7efee,
+  200 : #d7e4e3,
+  300 : #c7d9d7,
+  400 : #bbd0cf,
+  500 : #afc8c6,
+  600 : #a8c2c0,
+  700 : #9fbbb9,
+  800 : #96b4b1,
+  900 : #86a7a4,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #d1fffb,
+  A700 : #b8fff9,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$room-accent: (
+  50 : #fff9f0,
+  100 : #fef0d9,
+  200 : #fde7c0,
+  300 : #fcdda6,
+  400 : #fcd593,
+  500 : #fbce80,
+  600 : #fac978,
+  700 : #fac26d,
+  800 : #f9bc63,
+  900 : #f8b050,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #fff8ef,
+  A700 : #ffedd5,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$primary: mat.define-palette($room-primary);
+$secondary: mat.define-palette($room-secondary);
+$accent: mat.define-palette($room-accent);
+
+$room-theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    secondary: $secondary,
+    accent: $accent,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+
+@mixin main-room($theme) {
+  $room-primary: map-get($theme, primary);
+  $secondary: map-get($theme, secondary);
+  $accent: map-get($theme, accent);
+  app-main-room {
+    mat-card.main-card  {
+      background-color: #afc8c6;
+    }
+  }
+
+}
+
+@include mat.all-component-themes($room-theme);
+@include main-room($room-theme);

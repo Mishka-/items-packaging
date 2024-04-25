@@ -1,0 +1,19 @@
+<div class="svg-container">
+  <button class="labels-btn label-plus" (click)="addElement(name)">+</button>
+  <button class="labels-btn label-minus" (click)="removeElement(name)">
+    −
+  </button>
+  <div class="circle-badge bottom-right">{{ itemCount$ | async }}</div>
+  <div [style.width]="200" [style.height]="220" [innerHTML]="svgContent"></div>
+  <button
+    class="labels-btn place"
+    [disabled]="(itemCount$ | async) <= 0"
+    (click)="placeElementInPackageArea()"
+  >
+    place
+  </button>
+  <div class="description">
+    {{ objectType === 'container' ? 'capacity' : 'volume' }}
+    {{ objectType === 'container' ? capacity : volume }}
+  </div>
+</div>

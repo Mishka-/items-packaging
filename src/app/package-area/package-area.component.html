@@ -1,0 +1,79 @@
+<button class="prev-button" (click)="previous()" [disabled]="currentPage === 0">
+  &lt;
+</button>
+<div class="package-area-container">
+  <div class="package-area-wrapper">
+    <mat-card
+      *ngFor="let container of displayedContainers$ | async; let i = index"
+      [class.hidden]="!isContainerVisible(i)"
+      [class.highlighted]="isContainerHighlighted(container.id)"
+      (click)="addItemToContainer(container.id)"
+    >
+      <div class="package-area-label">{{ container.name }}</div>
+      <div class="package-area-label">
+        capacity {{ container.availableCapacity }}
+      </div>
+
+      <img [src]="getSvgUrl(container.name)" />
+
+      <button
+        *ngIf="displayedContainers.length > 1"
+        class="labels-btn place"
+        (click)="onSelectContainer(container.id, $event)"
+      >
+        place
+      </button>
+      <button
+        *ngIf="isContainerHighlighted(container.id) && selectedContainerId"
+        class="labels-btn move"
+        (click)="moveContainer(container.id, $event)"
+      >
+        move container
+      </button>
+      <ng-container *ngIf="containsElement(['keys'], i)">
+        <img
+          width="80px"
+          height="80px"
+          class="items-inside keys"
+          [src]="'/assets/keys.svg'"
+          alt="Keys"
+        />
+      </ng-container>
+      <ng-container *ngIf="containsElement(['credit-card'], i)">
+        <img
+          width="80px"
+          height="80px"
+          class="items-inside credit-card"
+          [src]="'/assets/credit-card.svg'"
+        />
+      </ng-container>
+      <ng-container *ngIf="containsElement(['smartphone'], i)">
+        <img
+          width="80px"
+          height="80px"
+          class="items-inside smartphone"
+          [src]="'/assets/smartphone.svg'"
+        />
+      </ng-container>
+      <ng-container *ngIf="containsElement(['wallet', 'org-box', 'closet'], i)">
+        <img
+          width="80px"
+          height="80px"
+          class="items-inside container"
+          [src]="'/assets/box.svg'"
+        />
+      </ng-container>
+
+      <button class="remove-button" (click)="removeContainer(container.id)">
+        <span class="remove-icon">✖️</span>
+      </button>
+    </mat-card>
+  </div>
+</div>
+<button
+  class="next-button"
+  (click)="next()"
+  [disabled]="currentPage >= maxPage"
+>
+  &gt;
+</button>

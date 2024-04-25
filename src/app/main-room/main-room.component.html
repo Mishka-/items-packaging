@@ -1,0 +1,53 @@
+<mat-toolbar color="primary">
+  <span class="example-spacer"></span>
+</mat-toolbar>
+
+<mat-sidenav-container class="card-container">
+  <mat-sidenav mode="side" opened>
+    <app-item
+      name="credit-card"
+      objectType="item"
+      class="items"
+      src="/assets/credit-card.svg"
+    ></app-item>
+    <app-item
+      name="keys"
+      objectType="item"
+      class="items"
+      src="/assets/keys.svg"
+    ></app-item>
+    <app-item
+      name="smartphone"
+      objectType="item"
+      class="items"
+      src="/assets/smartphone.svg"
+    ></app-item>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-card class="main-card">
+      <app-carousel></app-carousel>
+    </mat-card>
+  </mat-sidenav-content>
+
+  <mat-sidenav mode="side" position="end" opened>
+    <app-item
+      name="org-box"
+      objectType="container"
+      class="containers"
+      src="/assets/org-box.svg"
+    ></app-item>
+    <app-item
+      name="wallet"
+      objectType="container"
+      class="containers"
+      src="/assets/wallet.svg"
+    ></app-item>
+    <app-item
+      name="closet"
+      objectType="container"
+      class="containers"
+      src="/assets/closet.svg"
+    ></app-item>
+  </mat-sidenav>
+</mat-sidenav-container>
